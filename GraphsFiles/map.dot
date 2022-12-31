@@ -1,0 +1,15 @@
+strict graph map {
+	A -- {B , D , H, S};
+    B -- {C, L };
+	D -- {B, I , G};
+    E -- {D, F, G};
+	H -- {G, N, O};
+    C -- {M, L, I};
+    J -- {P, O, F}
+    N -- {Q, R, S}
+    O -- {P, T, Q}
+    L -- {M, S}
+    T -- {Q}
+    P -- {G,F}
+    R -- {S, Q}
+}

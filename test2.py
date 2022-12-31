@@ -4,6 +4,7 @@
 
 import matplotlib.pyplot as plt
 import networkx as nx
+import pygraphviz as pgv
 from networkx.drawing.nx_agraph import write_dot, graphviz_layout
 
 G = nx.Graph()
@@ -14,13 +15,15 @@ G.add_nodes_from([2,3,4,5])
 G.add_edge(1,2)
 G.add_edges_from([(3,2), (1,3), (3,5), (5,4), (1,4), (2,4)])
 
+G1 = pgv.AGraph(r'C:\Users\Gilad\Markman Dropbox\Gilad Markman\Python\Graph\GraphsFiles\tree.dot')
+G1.layout(prog='dot')
 D = nx.DiGraph()
 
 D.add_edges_from([(3,2), (1,3), (3,5), (1,4) ])
 
-#T = nx.balanced_tree(2, 5)
+T = nx.balanced_tree(2, 5)
 
-# nx.nx_agraph.write_dot(D, 'test.dot')
+nx.nx_agraph.write_dot(D, 'test.dot')
 
 pos = graphviz_layout(D, prog='dot')
 
@@ -28,14 +31,8 @@ subax1 = plt.subplot(131)
 nx.draw(G, pos, with_labels=True)
 
 subax2 = plt.subplot(132)
-nx.draw(G, with_labels=True)
+G1.draw('file.png')
 
 subax3 = plt.subplot(133)
 nx.draw(D, pos, with_labels=True)
 plt.show()
-
-class matrixGraph:
-    pass
-
-class listGraph:
-    pass

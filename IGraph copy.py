@@ -132,14 +132,14 @@ class IGraph:
         return False
 
     def set_node_attribute(self, node = None, name = None, value = None, values_dict= None):
-        if node and name :
+        if node and name and value is not None:
             if not self.is_node_attribute(name):
                 self.set_all_attributes(name, None)
             self.G.nodes[node][name] = value
         elif values_dict:
             nx.set_node_attributes(self.G, values_dict)
         else:
-            raise Exception ("you must enter: node, name OR values_dict")
+            raise Exception ("you must enter: node, name, value OR values_dict")
 
     def set_all_attributes (self, name, value= None):
         nodes = self.G.nodes
@@ -172,7 +172,7 @@ class IGraph:
             return nx.get_edge_attributes(self.G, name)
         
     def set_edge_attribute(self, edge = None, name = None, value = None, values_dict = None):
-        if edge and name:
+        if edge and name and value is not None:
             if not self.is_edge_attribute(name):
                 self.set_all_edge_attributes(name, None)
             u, v = edge
@@ -180,7 +180,7 @@ class IGraph:
         elif values_dict:
             nx.set_edge_attributes(self.G, values_dict)
         else:
-            raise Exception ("you must enter: edge, name OR values_dict")
+            raise Exception ("you must enter: edge, name, value OR values_dict")
     
     def set_all_edge_attributes(self, name, value = None):
         edges = self.get_edges()
@@ -192,14 +192,14 @@ class IGraph:
 ##################### Edges weights ############################
 
     def set_edge_weight (self, edge = None, weight = None, dict_values = None ):
-        if edge:
+        if edge and weight is not None:
             u, v = edge
             self.G[u][v]['weight'] = weight
         elif dict_values:
             #dict_values: {(u, v) : {'weight' : value}}
             self.set_edge_attribute(values_dict=dict_values)
         else:
-            raise Exception("you must enter edge or dict_values")
+            raise Exception("you must enter edge and weight or dict_values")
 
     def set_random_edges_weights(self, start, end):
         edges = self.get_edges()

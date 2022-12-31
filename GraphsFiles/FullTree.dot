@@ -1,0 +1,9 @@
+strict digraph G {
+	A -> {B , C}
+    B -> {D, E}
+    C -> {F, G}
+    D -> {H, I}
+    E -> {J, K}
+    F -> {L, M}
+    G -> {N, O}
+    }
