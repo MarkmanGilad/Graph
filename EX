@@ -1,0 +1,54 @@
+
+from Graph import myGraph
+import matplotlib.pyplot as plt
+import random
+
+
+G1 = myGraph()
+G1.set_from_dotFile('GraphsFiles/biGraph.dot')
+
+path = G1.find_path_DFS ('1', '20')
+print("find DFS", path)
+G1.set_nodes_color(path, 'red')
+plt.subplot(2,2,1)
+G1.draw()
+
+
+G2 = myGraph()
+G2.set_from_dotFile('GraphsFiles/biGraph.dot')
+path = G2.find_path_BFS ('1', '20')
+print("find BFS", path)
+G2.set_nodes_color(path, 'g')
+plt.subplot(2,2,2)
+G2.draw()
+
+
+
+G3 = myGraph()
+G3.set_from_dotFile('GraphsFiles/biGraph1.dot')
+
+edges = G3.get_all_edges()
+# print(edges)
+dict_values = {}
+for e in edges:
+    dict_values[e] = {"weight" :random.randint(0 , 10)}
+
+G3.set_edges_weights(dict_values)
+
+path = G3.UCS('9', 'A')
+print ('UCS',path)
+print(G3.get_node_attribute('A', 'distance'))
+G3.set_nodes_color(path, 'g')
+plt.subplot(2,2,3)
+G3.draw('neato')
+
+G3.set_all_nodes_color('lightgrey')
+path = G3.find_path_BFS ('9', 'A')
+print("find BFS", path)
+G3.set_nodes_color(path, 'r')
+plt.subplot(2,2,4)
+G3.draw('neato')
+
+
+
+plt.show()

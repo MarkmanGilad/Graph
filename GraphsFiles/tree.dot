@@ -1,0 +1,22 @@
+strict digraph "" {
+    
+    1 [distance=17]
+    2 [distance=17]
+    3 [distance=17]
+    4 [distance=17]
+    5 [distance=17]
+    6 [distance=17]
+    7 [distance=17]
+    8 [distance=17]
+    9 [distance=17]
+    10 [distance=17]
+
+	1 -> {2 , 4 , 6, 8};
+    2 -> {3, 5 };
+	4 -> {9 , 10};
+    5 -> {7};
+	8 -> {14, 15};
+    3 -> {13, 12};
+    10 -> {16, 20}
+    14 -> {17, 18, 19}
+}
